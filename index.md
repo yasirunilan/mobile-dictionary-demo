@@ -264,43 +264,87 @@ export default HomeScreen;
 
 ```
 
+7) Fetching Data and Displaying
+
+```javascript
+//HomeScreen.js
+import React from 'react';
+import {View, TextInput, StyleSheet, SafeAreaView, Button, Alert, Text} from 'react-native';
 
 
+class HomeScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchText: '',
+            meaningText: ''
+        }
 
-## Welcome to GitHub Pages
+    }
 
-You can use the [editor on GitHub](https://github.com/yasirunilan/mobile-dictionary-demo/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+    searchDictionary = async () => {
+        let url = 'https://api.dictionaryapi.dev/api/v2/entries/en_US/' + this.state.searchText;
+        let response = await fetch(url);
+        let result = await response.json();
+        let meaningText = result[0].meanings[0].definitions[0].definition;
+        this.setState({meaningText: meaningText})
+    }
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+    render() {
+        return(
+            <SafeAreaView>
+            <View>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(value)=>{
+                        this.setState({searchText: value})
+                    }}
+                    value={this.state.searchText}
+                    placeholder="Type your Text"
+                />
 
-### Markdown
+                <View style={styles.button}>
+                    <Button
+                        title="Search"
+                        onPress={this.searchDictionary}
+                    />
+                </View>
+                <View style={styles.searchResultText}>
+                    <Text>{this.state.meaningText}</Text>
+                </View>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+            </View>
+            </SafeAreaView>
+        );
+    }
+}
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+    },
+    button: {
+        height: 40,
+        margin: 12,
+    },
+    searchResultText: {
+        marginHorizontal:20
+    }
+});
 
-```markdown
-Syntax highlighted code block
+export default HomeScreen;
 
-# Header 1
-## Header 2
-### Header 3
+```
+8) Building the app
+```bash
+//android
+expo build:android
 
-- Bulleted
-- List
+or
+expo build:android -t apk
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+//ios
+expo build:ios
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/yasirunilan/mobile-dictionary-demo/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
