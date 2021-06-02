@@ -109,6 +109,9 @@ class HomeScreen extends React.Component {
         return(
             <SafeAreaView>
             <View>
+                <View style={styles.title}>
+                    <Text style={styles.titleText}>Your Mini Dictionary</Text>
+                </View>
                 <TextInput
                     style={styles.input}
                     onChangeText={(value)=>{
@@ -128,6 +131,13 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
     },
+    title: {
+        alignItems: 'center'
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 30
+    }
 });
 
 export default HomeScreen;
@@ -159,6 +169,9 @@ class HomeScreen extends React.Component {
         return(
             <SafeAreaView>
             <View>
+                <View style={styles.title}>
+                    <Text style={styles.titleText}>Your Mini Dictionary</Text>
+                </View>
                 <TextInput
                     style={styles.input}
                     onChangeText={(value)=>{
@@ -189,6 +202,13 @@ const styles = StyleSheet.create({
     button: {
         height: 40,
         margin: 12,
+    },
+    title: {
+        alignItems: 'center'
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 30
     }
 });
 
@@ -221,6 +241,9 @@ class HomeScreen extends React.Component {
         return(
             <SafeAreaView>
             <View>
+                <View style={styles.title}>
+                    <Text style={styles.titleText}>Your Mini Dictionary</Text>
+                </View>
                 <TextInput
                     style={styles.input}
                     onChangeText={(value)=>{
@@ -257,6 +280,13 @@ const styles = StyleSheet.create({
     },
     searchResultText: {
         marginHorizontal:20
+    },
+    title: {
+        alignItems: 'center'
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 30
     }
 });
 
@@ -294,6 +324,9 @@ class HomeScreen extends React.Component {
         return(
             <SafeAreaView>
             <View>
+                <View style={styles.title}>
+                    <Text style={styles.titleText}>Your Mini Dictionary</Text>
+                </View>
                 <TextInput
                     style={styles.input}
                     onChangeText={(value)=>{
@@ -330,6 +363,13 @@ const styles = StyleSheet.create({
     },
     searchResultText: {
         marginHorizontal:20
+    },
+    title: {
+        alignItems: 'center'
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 30
     }
 });
 
